@@ -1,0 +1,18 @@
+let xhr= new XMLHttpRequest();
+xhr.open('GET',"https://restcountries.com/v3.1/all")
+xhr.onload=function(){
+    if(xhr.status>=200 && xhr.status<300)
+    {
+        let data= JSON.parse(this.response);
+                console.log(data);
+        data.forEach((data) => {
+            console.log(`
+            Name:${data.name.common}
+            Capital:${data.capital}
+            Flag:${data.flag}
+            `);
+        })
+    }
+    
+}
+xhr.send();
